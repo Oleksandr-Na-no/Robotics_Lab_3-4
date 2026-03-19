@@ -12,17 +12,10 @@ Open the Docker container from the **[robotics\_lpnu](https://github.com/RybOlya
 > ./scripts/cmd run
 > ```
 
-Since Labs 3 and 4 use TurtleBot3, you need to install its packages inside the container (if not already built into your Docker image):
-
-```bash
-sudo apt update && sudo apt install -y ros-jazzy-turtlebot3 ros-jazzy-turtlebot3-simulations
-```
-
 -----
 
 ### 2\. Setup Files and Build the Workspace
 
-**Important:** Before launching, make sure to copy your `robot.sdf` from previous labs to the `worlds` folder.
 
 Inside the container, build the packages for both labs:
 
@@ -33,7 +26,6 @@ colcon build --packages-select lab3 lab4
 source install/setup.bash
 ```
 
-> ⚠️ Rebuild every time you change `package.xml`, `setup.py`, launch files, or add/edit python scripts (like `figure_8_path.py` or `dead_reckoning.py`).
 
 -----
 
@@ -74,8 +66,6 @@ ros2 run lab3 circle_path
 ros2 run lab3 figure_8_path
 ```
 
-✅ The robot should start moving, and RViz2 will show the trajectory on `/path` (Ensure Fixed Frame is set to `odom`).
-
 -----
 
 ### 4\. Running Lab 4: Dead Reckoning
@@ -99,5 +89,3 @@ source /opt/ros/jazzy/setup.bash
 source install/setup.bash
 ros2 run lab3 circle_path
 ```
-
-✅ **You should see:** RViz displaying two paths—the odom (ground truth) and your calculated dead reckoning path. The terminal will log the error/drift.
